@@ -3,21 +3,17 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Bookmark } from '../../models/bookmarks.model';
 import { BookmarksActions } from '../actions/bookmarks.actions';
 
-// ✅ Clear, consistent key
 export const bookmarksFeatureKey = 'bookmarks';
 
-// ✅ Entity state interface
-export interface State extends EntityState<Bookmark> {
-  // additional state props here if needed
-}
+// Entity state interface
+export interface State extends EntityState<Bookmark> {}
 
-// ✅ Create the entity adapter
+// Create the entity adapter
 export const adapter: EntityAdapter<Bookmark> = createEntityAdapter<Bookmark>();
 
-// ✅ Initial state
+// Initial state
 export const initialState: State = adapter.getInitialState({});
 
-// ✅ Reducer with clean action names
 export const reducer = createReducer(
   initialState,
   on(BookmarksActions.addBookmark, (state, { bookmark }) =>
@@ -26,12 +22,12 @@ export const reducer = createReducer(
   on(BookmarksActions.updateBookmark, (state, { bookmark }) =>
     adapter.updateOne(bookmark, state)
   ),
-  on(BookmarksActions.loadBookmarks, (state, { bookmarks }) =>
+  on(BookmarksActions.loadBookmarksSuccess, (state, { bookmarks }) =>
     adapter.setAll(bookmarks, state)
   )
 );
 
-// ✅ Feature definition
+// Feature definition
 export const bookmarksFeature = createFeature({
   name: bookmarksFeatureKey,
   reducer,
@@ -40,6 +36,6 @@ export const bookmarksFeature = createFeature({
   }),
 });
 
-// ✅ Selectors
+// Selectors
 export const { selectIds, selectEntities, selectAll, selectTotal } =
   bookmarksFeature;

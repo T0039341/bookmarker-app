@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-
-import { concatMap } from 'rxjs/operators';
-import { Observable, EMPTY } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BookmarksActions } from '../actions/bookmarks.actions';
+import { Bookmark } from '../../models/bookmarks.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BookmarksEffects {
   loadBookmarks$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BookmarksActions.loadBookmarks),
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      concatMap(() => EMPTY as Observable<{ type: string }>)
+      ofType(BookmarksActions.initLoadBookmarks),
+      switchMap(() =>
+        this.http
+          .get<Bookmark[]>('/api/bookmarks')
+          .pipe(
+            map((bookmarks) =>
+              BookmarksActions.loadBookmarksSuccess({ bookmarks })
+            )
+          )
+      )
     );
   });
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }
