@@ -22,5 +22,19 @@ export class BookmarksEffects {
     );
   });
 
+  addBookmark$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookmarksActions.addBookmark),
+      switchMap(({ bookmark }) =>
+        this.http.post<Bookmark>('/api/bookmarks', bookmark).pipe(
+          map((saved) => {
+            console.log('Server responded with bookmark (with id):', saved);
+            return BookmarksActions.addBookmarkSuccess({ bookmark: saved });
+          })
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions, private http: HttpClient) {}
 }
