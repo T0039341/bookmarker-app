@@ -8,39 +8,7 @@ import { Bookmark } from '../models/bookmarks.model';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const bookmarks: Bookmark[] = [
-      {
-        id: '1',
-        title: 'Today Link',
-        url: 'https://today.com',
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: '2',
-        title: 'Today Link',
-        url: 'https://today.com',
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: '3',
-        title: 'Today Link',
-        url: 'https://today.com',
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: '4',
-        title: 'Yesterday Link',
-        url: 'https://yesterday.com',
-        createdAt: '2025-08-04T10:00:00.000Z',
-      },
-      {
-        id: '5',
-        title: 'Old Link',
-        url: 'https://older.com',
-        createdAt: '2025-07-20T12:00:00.000Z',
-      },
-    ];
-
+    const bookmarks: Bookmark[] = [];
     return { bookmarks };
   }
 
