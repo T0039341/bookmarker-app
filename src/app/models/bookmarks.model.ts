@@ -4,3 +4,9 @@ export interface Bookmark {
   url: string;
   createdAt: string;
 }
+
+export interface GroupedBookmarks {
+  today: Bookmark[];
+  yesterday: Bookmark[];
+  older: Bookmark[];
+}

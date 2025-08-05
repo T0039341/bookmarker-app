@@ -1,0 +1,57 @@
+.bookmark-list-container {
+  padding: 16px;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.bookmark-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.bookmark-list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+
+  .bookmark-icon {
+    margin-right: 16px;
+    color: #616161;
+    font-size: 28px;
+  }
+
+  .bookmark-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .bookmark-title {
+    font-weight: 500;
+  }
+
+  .bookmark-link {
+    color: #1a0dab;
+    font-size: 14px;
+    word-break: break-all;
+  }
+
+  .edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    align-self: center;
+
+    .material-icons {
+      font-size: 22px;
+      color: #616161;
+    }
+
+    &:hover .material-icons {
+      color: #b3004b;
+    }
+  }
+}
