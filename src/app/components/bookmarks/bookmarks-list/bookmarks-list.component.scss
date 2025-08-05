@@ -36,14 +36,13 @@
     color: #1a0dab;
     font-size: 14px;
     word-break: break-all;
+    display: contents;
   }
 
   .edit-button {
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: auto;
-    align-self: center;
 
     .material-icons {
       font-size: 22px;

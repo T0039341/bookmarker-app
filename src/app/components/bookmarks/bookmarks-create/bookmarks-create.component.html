@@ -1,1 +1,56 @@
-<p>bookmarks-create works!</p>
+<mat-card class="bookmark-card">
+  <div class="bookmark-card-header">
+    <span class="bookmark-card-title">Create New Bookmark</span>
+    <span class="bookmark-card-description">Type bookmark name and url</span>
+    <span class="bookmark-card-icon">
+      <mat-icon>bookmark_border</mat-icon>
+    </span>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="bookmark-card-fields">
+      <mat-form-field appearance="outline" class="bookmark-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="title" />
+        <mat-error
+          *ngIf="
+            form.get('title')?.hasError('required') &&
+            form.get('title')?.touched
+          "
+        >
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="bookmark-field">
+        <mat-label>URL</mat-label>
+        <input matInput formControlName="url" />
+        <mat-error
+          *ngIf="
+            form.get('url')?.hasError('required') && form.get('url')?.touched
+          "
+        >
+          URL is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            form.get('url')?.hasError('pattern') && form.get('url')?.touched
+          "
+        >
+          Please enter a valid URL
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div class="bookmark-card-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Create Bookmark
+      </button>
+    </div>
+  </form>
+</mat-card>
