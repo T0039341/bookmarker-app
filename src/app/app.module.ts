@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import * as fromBookmarks from './store/reducers/bookmarks.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { BookmarksEffects } from './store/effects/bookmarks.effects';
+import { MaterialModule } from './shared/material/material.module';
+import { BookmarksModule } from './bookmarks/bookmarks.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
+    BookmarksModule,
     NoopAnimationsModule,
-    StoreModule.forFeature(fromBookmarks.bookmarksesFeatureKey, fromBookmarks.reducer),
-    EffectsModule.forFeature([BookmarksEffects])
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot({}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
