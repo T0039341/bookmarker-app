@@ -8,13 +8,17 @@
       class="search-field"
     >
       <mat-icon matSuffix>search</mat-icon>
-      <mat-label>Filter Bookmarks</mat-label>
+      <mat-label class="search-label">Filter Bookmarks</mat-label>
       <input matInput placeholder="Filter" />
     </mat-form-field>
   </div>
 
   <span class="right">
-    <button mat-icon-button aria-label="Add bookmark">
+    <button
+      [routerLink]="['/bookmarks/create']"
+      mat-icon-button
+      aria-label="Add bookmark"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </span>
