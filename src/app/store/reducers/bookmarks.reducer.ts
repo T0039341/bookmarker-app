@@ -16,7 +16,8 @@ export const initialState: State = adapter.getInitialState({});
 
 export const reducer = createReducer(
   initialState,
-  on(BookmarksActions.addBookmark, (state, { bookmark }) =>
+
+  on(BookmarksActions.addBookmarkSuccess, (state, { bookmark }) =>
     adapter.addOne(bookmark, state)
   ),
   on(BookmarksActions.updateBookmark, (state, { bookmark }) =>
