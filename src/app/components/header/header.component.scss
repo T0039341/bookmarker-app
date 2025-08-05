@@ -1,0 +1,11 @@
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+mat-form-field {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+}
