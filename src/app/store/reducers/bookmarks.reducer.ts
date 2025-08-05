@@ -1,65 +1,45 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Bookmarks } from '../models/bookmarks.model';
+import { Bookmark } from '../../models/bookmarks.model';
 import { BookmarksActions } from '../actions/bookmarks.actions';
 
-export const bookmarksesFeatureKey = 'bookmarkses';
+// ✅ Clear, consistent key
+export const bookmarksFeatureKey = 'bookmarks';
 
-export interface State extends EntityState<Bookmarks> {
-  // additional entities state properties
+// ✅ Entity state interface
+export interface State extends EntityState<Bookmark> {
+  // additional state props here if needed
 }
 
-export const adapter: EntityAdapter<Bookmarks> = createEntityAdapter<Bookmarks>();
+// ✅ Create the entity adapter
+export const adapter: EntityAdapter<Bookmark> = createEntityAdapter<Bookmark>();
 
-export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
-});
+// ✅ Initial state
+export const initialState: State = adapter.getInitialState({});
 
+// ✅ Reducer with clean action names
 export const reducer = createReducer(
   initialState,
-  on(BookmarksActions.addBookmarks,
-    (state, action) => adapter.addOne(action.bookmarks, state)
+  on(BookmarksActions.addBookmark, (state, { bookmark }) =>
+    adapter.addOne(bookmark, state)
   ),
-  on(BookmarksActions.upsertBookmarks,
-    (state, action) => adapter.upsertOne(action.bookmarks, state)
+  on(BookmarksActions.updateBookmark, (state, { bookmark }) =>
+    adapter.updateOne(bookmark, state)
   ),
-  on(BookmarksActions.addBookmarkss,
-    (state, action) => adapter.addMany(action.bookmarkss, state)
-  ),
-  on(BookmarksActions.upsertBookmarkss,
-    (state, action) => adapter.upsertMany(action.bookmarkss, state)
-  ),
-  on(BookmarksActions.updateBookmarks,
-    (state, action) => adapter.updateOne(action.bookmarks, state)
-  ),
-  on(BookmarksActions.updateBookmarkss,
-    (state, action) => adapter.updateMany(action.bookmarkss, state)
-  ),
-  on(BookmarksActions.deleteBookmarks,
-    (state, action) => adapter.removeOne(action.id, state)
-  ),
-  on(BookmarksActions.deleteBookmarkss,
-    (state, action) => adapter.removeMany(action.ids, state)
-  ),
-  on(BookmarksActions.loadBookmarkss,
-    (state, action) => adapter.setAll(action.bookmarkss, state)
-  ),
-  on(BookmarksActions.clearBookmarkss,
-    state => adapter.removeAll(state)
-  ),
+  on(BookmarksActions.loadBookmarks, (state, { bookmarks }) =>
+    adapter.setAll(bookmarks, state)
+  )
 );
 
-export const bookmarksesFeature = createFeature({
-  name: bookmarksesFeatureKey,
+// ✅ Feature definition
+export const bookmarksFeature = createFeature({
+  name: bookmarksFeatureKey,
   reducer,
-  extraSelectors: ({ selectBookmarksesState }) => ({
-    ...adapter.getSelectors(selectBookmarksesState)
+  extraSelectors: ({ selectBookmarksState }) => ({
+    ...adapter.getSelectors(selectBookmarksState),
   }),
 });
 
-export const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal,
-} = bookmarksesFeature;
+// ✅ Selectors
+export const { selectIds, selectEntities, selectAll, selectTotal } =
+  bookmarksFeature;

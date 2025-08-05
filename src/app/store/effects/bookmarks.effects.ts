@@ -7,12 +7,9 @@ import { BookmarksActions } from '../actions/bookmarks.actions';
 
 @Injectable()
 export class BookmarksEffects {
-
-
-  loadBookmarkss$ = createEffect(() => {
+  loadBookmarks$ = createEffect(() => {
     return this.actions$.pipe(
-
-      ofType(BookmarksActions.loadBookmarkss),
+      ofType(BookmarksActions.loadBookmarks),
       /** An EMPTY observable only emits completion. Replace with your own observable API request */
       concatMap(() => EMPTY as Observable<{ type: string }>)
     );
