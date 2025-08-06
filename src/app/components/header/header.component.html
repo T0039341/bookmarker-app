@@ -1,0 +1,25 @@
+<mat-toolbar class="header-toolbar" color="primary">
+  <span class="left"><strong>Bookmarker</strong></span>
+
+  <div class="center">
+    <mat-form-field
+      subscriptSizing="dynamic"
+      appearance="outline"
+      class="search-field"
+    >
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-label class="search-label">Filter Bookmarks</mat-label>
+      <input [formControl]="filterControl" matInput placeholder="Filter" />
+    </mat-form-field>
+  </div>
+
+  <span class="right">
+    <button
+      [routerLink]="['/bookmarks/create']"
+      mat-icon-button
+      aria-label="Add bookmark"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </span>
+</mat-toolbar>

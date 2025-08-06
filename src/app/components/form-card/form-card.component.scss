@@ -1,0 +1,55 @@
+.bookmark-card {
+  max-width: 1050px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.07);
+  border: 1px solid #eee;
+  padding: 0;
+
+  .bookmark-card-header {
+    display: flex;
+    align-items: center;
+    padding: 24px 24px 0 24px;
+
+    .bookmark-card-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      flex: 1;
+    }
+    .bookmark-card-description {
+      flex: 2;
+      color: #757575;
+      font-size: 1.1rem;
+    }
+    .bookmark-card-icon {
+      flex: 0;
+      display: flex;
+      align-items: center;
+      color: #757575;
+      font-size: 2rem;
+    }
+  }
+
+  .bookmark-card-fields {
+    display: flex;
+    gap: 2rem;
+    padding: 24px 24px 0 24px;
+  }
+
+  .mat-divider {
+    margin: 24px 0 0 0;
+    border-top-color: #eee;
+  }
+
+  .bookmark-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+}
+
+.bookmark-url-field {
+  flex: 1 1 0;
+  min-width: 200px;
+}

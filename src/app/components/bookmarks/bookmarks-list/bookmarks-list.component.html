@@ -1,0 +1,69 @@
+<div class="bookmark-list-container">
+  @if (today.length > 0) {
+  <h4>Today</h4>
+  <ul class="bookmark-list">
+    @for (bm of today; track bm.id) {
+    <li class="bookmark-list-item">
+      <span class="bookmark-icon material-icons">bookmark</span>
+      <div class="bookmark-content">
+        <div class="bookmark-title">{{ bm.title }}</div>
+        <a class="bookmark-link" [href]="bm.url" target="_blank">{{
+          bm.url
+        }}</a>
+      </div>
+      <button
+        class="edit-button"
+        [routerLink]="['/bookmarks/edit', bm.id]"
+        aria-label="Edit bookmark"
+      >
+        <span class="material-icons">edit</span>
+      </button>
+    </li>
+    }
+  </ul>
+  } @if (yesterday.length > 0) {
+  <h4>Yesterday</h4>
+  <ul class="bookmark-list">
+    @for (bm of yesterday; track bm.id) {
+    <li class="bookmark-list-item">
+      <span class="bookmark-icon material-icons">bookmark</span>
+      <div class="bookmark-content">
+        <div class="bookmark-title">{{ bm.title }}</div>
+        <a class="bookmark-link" [href]="bm.url" target="_blank">{{
+          bm.url
+        }}</a>
+      </div>
+      <button
+        class="edit-button"
+        [routerLink]="['/bookmarks/edit', bm.id]"
+        aria-label="Edit bookmark"
+      >
+        <span class="material-icons">edit</span>
+      </button>
+    </li>
+    }
+  </ul>
+  } @if (older.length > 0) {
+  <h4>Older</h4>
+  <ul class="bookmark-list">
+    @for (bm of older; track bm.id) {
+    <li class="bookmark-list-item">
+      <span class="bookmark-icon material-icons">bookmark</span>
+      <div class="bookmark-content">
+        <div class="bookmark-title">{{ bm.title }}</div>
+        <a class="bookmark-link" [href]="bm.url" target="_blank">{{
+          bm.url
+        }}</a>
+      </div>
+      <button
+        class="edit-button"
+        [routerLink]="['/bookmarks/edit', bm.id]"
+        aria-label="Edit bookmark"
+      >
+        <span class="material-icons">edit</span>
+      </button>
+    </li>
+    }
+  </ul>
+  }
+</div>
