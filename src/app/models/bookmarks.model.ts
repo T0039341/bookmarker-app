@@ -1,7 +1,7 @@
 import { ValidatorFn } from '@angular/forms';
 
 export interface Bookmark {
-  id?: string;
+  id: string;
   title: string;
   url: string;
   createdAt: string;
@@ -13,8 +13,13 @@ export interface GroupedBookmarks {
   older: Bookmark[];
 }
 
-export interface BookMarkFieldsConfig {
-  name: string;
+export interface BookmarkFormValue {
+  title: string;
+  url: string;
+}
+
+export interface FieldConfig<T> {
+  name: keyof T;
   label: string;
   type?: string;
   validators?: ValidatorFn[];

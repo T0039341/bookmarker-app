@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BookmarksActions } from 'src/app/store/actions/bookmarks.actions';
 import { FormCardComponent } from '../../form-card/form-card.component';
-import { BookMarkFieldsConfig } from 'src/app/models/bookmarks.model';
+import { BookmarkFormValue, FieldConfig } from 'src/app/models/bookmarks.model';
 
 @Component({
   selector: 'app-bookmarks-create',
@@ -20,7 +20,7 @@ export class BookmarksCreateComponent {
 
   private urlPattern = /^(https?:\/\/)?(www\.)?[\w-]+\.[a-zA-Z]{2,}(\/.*)?$/;
 
-  fields: BookMarkFieldsConfig[] = [
+  fields: FieldConfig<BookmarkFormValue>[] = [
     {
       name: 'title',
       label: 'Name',
