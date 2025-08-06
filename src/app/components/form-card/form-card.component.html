@@ -1,0 +1,46 @@
+<mat-card class="bookmark-card">
+  <div class="bookmark-card-header">
+    <span class="bookmark-card-title">{{ title }}</span>
+    <span class="bookmark-card-description">{{ description }}</span>
+    <span class="bookmark-card-icon">
+      <mat-icon>{{ icon }}</mat-icon>
+    </span>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="bookmark-card-fields">
+      @for (field of fields; track field.name) {
+      <mat-form-field
+        [ngClass]="{ 'bookmark-url-field': field.name === 'url' }"
+        class="bookmark-field"
+      >
+        <mat-label>{{ field.label }}</mat-label>
+        <input
+          matInput
+          [type]="field.type || 'text'"
+          [formControlName]="field.name"
+        />
+        @if (form.get(field.name)?.hasError('required') &&
+        form.get(field.name)?.touched) {
+        <mat-error> {{ field.label }} is required </mat-error>
+        } @if (form.get(field.name)?.hasError('pattern') &&
+        form.get(field.name)?.touched) {
+        <mat-error>
+          Please enter a valid {{ field.label | lowercase }}
+        </mat-error>
+        }
+      </mat-form-field>
+      }
+    </div>
+    <mat-divider></mat-divider>
+    <div class="bookmark-card-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        {{ buttonLabel }}
+      </button>
+    </div>
+  </form>
+</mat-card>
