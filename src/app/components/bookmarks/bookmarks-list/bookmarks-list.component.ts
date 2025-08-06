@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Bookmark } from '../../../models/bookmarks.model';
 import { BookmarksActions } from '../../../store/actions/bookmarks.actions';
 import { bookmarksFeature } from '../../../store/reducers/bookmarks.reducer';
