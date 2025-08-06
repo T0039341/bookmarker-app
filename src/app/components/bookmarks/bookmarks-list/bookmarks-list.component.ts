@@ -38,7 +38,7 @@ export class BookmarksListComponent implements OnInit, OnDestroy {
     this.store.dispatch(BookmarksActions.initLoadBookmarks());
 
     this.store
-      .select(bookmarksFeature.selectAll)
+      .select(bookmarksFeature.selectFilteredBookmarks)
       .pipe(takeUntil(this.destroy$))
       .subscribe((bookmarks) => {
         const grouped = this.groupingService.groupBookmarks(bookmarks);

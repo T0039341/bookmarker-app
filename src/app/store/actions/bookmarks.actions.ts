@@ -6,6 +6,8 @@ import { Bookmark } from '../../models/bookmarks.model';
 export const BookmarksActions = createActionGroup({
   source: 'Bookmarks/API',
   events: {
+    'Set Filter': props<{ filter: string }>(),
+
     'Init Load Bookmarks': emptyProps(),
 
     'Load Bookmarks Success': props<{ bookmarks: Bookmark[] }>(),

@@ -9,7 +9,7 @@
     >
       <mat-icon matSuffix>search</mat-icon>
       <mat-label class="search-label">Filter Bookmarks</mat-label>
-      <input matInput placeholder="Filter" />
+      <input [formControl]="filterControl" matInput placeholder="Filter" />
     </mat-form-field>
   </div>
 
