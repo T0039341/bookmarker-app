@@ -32,6 +32,10 @@ export const reducer = createReducer(
   on(BookmarksActions.updateBookmark, (state, { bookmark }) =>
     adapter.updateOne(bookmark, state)
   ),
+  on(BookmarksActions.updateBookmarkSuccess, (state, { bookmark }) =>
+    adapter.updateOne(bookmark, state)
+  ),
+
   on(BookmarksActions.loadBookmarksSuccess, (state, { bookmarks }) =>
     adapter.setAll(bookmarks, state)
   )

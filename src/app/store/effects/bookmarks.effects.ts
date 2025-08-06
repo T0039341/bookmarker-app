@@ -36,5 +36,31 @@ export class BookmarksEffects {
     )
   );
 
+  updateBookmark$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BookmarksActions.updateBookmark),
+      switchMap(({ bookmark }) =>
+        this.http
+          .put<Bookmark>(`/api/bookmarks/${bookmark.id}`, {
+            ...bookmark.changes,
+          })
+          .pipe(
+            map((updated) =>
+              BookmarksActions.updateBookmarkSuccess({
+                bookmark: {
+                  id: updated.id!,
+                  changes: {
+                    title: updated.title,
+                    url: updated.url,
+                    createdAt: updated.createdAt,
+                  },
+                },
+              })
+            )
+          )
+      )
+    )
+  );
+
   constructor(private actions$: Actions, private http: HttpClient) {}
 }
